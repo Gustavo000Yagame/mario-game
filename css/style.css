@@ -1,10 +1,39 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.game-board{
+body {
+    background: linear-gradient(#5e410c, #c78233);
+    font-family: Arial, sans-serif;
+}
+
+.hud {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.timer, .coins {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    border: 2px solid #FFD700;
+}
+
+#timer, #coins {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.game-board {
     width: 100%;
     height: 500px;
     border-bottom: 15px solid #28750a;
@@ -14,24 +43,48 @@
     background: linear-gradient(#87CEEB, #E0F6FF);
 }
 
-.pipe{
+.pipe {
     position: absolute;
     bottom: 0;
     width: 110px;
     animation: pipe-animation 1.5s infinite linear;
 }
 
-.mario{
+.goomba {
+    position: absolute;
+    bottom: -10px;
+    width: 70px;
+    right: -50px;
+}
+
+.mario {
     width: 150px;
     position: absolute;
     bottom: 0;
+}
+
+.flag {
+    position: absolute;
+    bottom: 0;
+    right: -200px;
+    width: 120px;
+    animation: flag-entrance 2s ease-out forwards;
+}
+
+@keyframes flag-entrance {
+    from {
+        right: -200px;
+    }
+    to {
+        right: 50px;
+    }
 }
 
 .jump {
     animation: jump 500ms ease-out;
 }
 
-.nuvem{
+.nuvem {
     position: absolute;
     width: 450px;
     animation: cloud-animation 15s infinite linear;
@@ -39,13 +92,30 @@
 
 @keyframes pipe-animation {
     from {
-        right:-80px;
+        right: -80px;
     }
     to {
         right: 100%;
     }
 }
 
+@keyframes goomba-animation {
+    from {
+        right: -50px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes coin-float {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: 200px;
+    }
+}
 
 @keyframes jump {
     0% {
